@@ -1,0 +1,10 @@
+{
+    "task_type": "ia",
+    "rounds": 5,
+    "agent_cnt": 2,
+    "generation_setting": "greedy",
+    "max_new_tokens": 256,
+    "prompt_file": "prompts/ia.yaml",
+    "retrieval_topk": 6,
+    "sample": 300
+}

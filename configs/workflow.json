@@ -1,0 +1,10 @@
+{
+    "task_type": "workflow",
+    "rounds": -1,
+    "agent_cnt": 7,
+    "generation_setting": "greedy",
+    "max_new_tokens_single": 256,
+    "max_new_tokens_ma": 100,
+    "prompt_file": "prompts/workflow.json",
+    "sample": 300
+}

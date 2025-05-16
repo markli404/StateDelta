@@ -1,0 +1,8 @@
+{
+    "task_type": "debate",
+    "rounds": 3,
+    "agent_cnt": 2,
+    "generation_setting": "default",
+    "max_new_tokens": 512,
+    "prompt_file": "prompts/debate.yaml"
+}

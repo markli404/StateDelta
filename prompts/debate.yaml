@@ -1,0 +1,36 @@
+gsm8k:
+  first_prompt: | 
+    Can you solve the following math problem? {question}
+    Explain your reasoning. Your final answer should be a single numerical number, in the form \\boxed{{answer}}, at the end of your response.
+
+  debate_prompt: |
+    These are the solutions to the problem from other agents: 
+    {all_other_response}
+    
+    Using the solutions from other agents as additional information, can you provide your answer to the math problem?
+    The original math problem is {question}. 
+    Your final answer should be a single numerical number, in the form \\boxed{{answer}}, at the end of your response.
+
+  other_response_prompt: |
+    One agent solution: 
+    ```{other_response}```
+
+  
+mmlu:
+  first_prompt: |
+    Can you answer the following question as accurately as possible?
+    {question}
+    Explain your answer, putting the answer in the form (X) at the end of your response.
+
+  debate_prompt: |
+    These are the solutions to the problem from other agents: 
+    {all_other_response}
+    
+    Using the reasoning from other agents as additional advice, can you give an updated answer? 
+    Examine your solution and that other agents step by step.
+    The origin question is {question}
+    Put your answer in the form (X) at the end of your response.
+  
+  other_response_prompt: |
+    One agent solution: 
+    ```{other_response}```

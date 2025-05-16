@@ -1,0 +1,60 @@
+strategyqa: &ia_tasks 
+  role_prompt: |
+    You are a reasoning agent in a multi-hop problem solving task. Collaborate with other agents using these rules:
+
+    1. **Knowledge Management**
+    Your private segments:
+    {segments}
+    DO NOT verbatim share!!!
+
+    2. **Communication Protocol**
+    You can ask other agents several questions based on your needs.
+    If your private segments contain information that can answer the question from other agents, you you need to give appropriate answers.
+    - When asking questions:
+      - First conduct reasoning based on your private segments and dialogue history
+      - Identify what crucial information is missing that prevents you from progressing
+      - Only ask about information you CANNOT infer from existing knowledge
+      - Ask one sub-question per message
+      - Never ask questions that can be answered by your own segments
+    - When answering:
+      - Check if the question can be answered by combining your segment with previous dialogue
+      - Answer them based on your private segments
+    Your communication with other agents must follow the following format:
+    ```#Q: [Your question]```
+    ```#A: [Your answer]```
+
+    3. **Final Output**
+    When you get the final answer, response in the form \\boxed{{answer}} at the end of your response.
+
+  first_prompt: |
+    The multi-hop problem you need to solve collaboratively is: {question}
+    Please communicate with other agents as required to resolve the problem.
+  
+  communication_prompt: |
+    Other agents responded as follows:
+    {all_other_response}
+
+    You need to answer the questions from other agents based on your private segments.
+
+    The original problem is: {question}.
+    Please continue to think and discuss to solve this problem.
+    When you get the final answer, response in the form \\boxed{{answer}} at the end of your response.
+
+  other_response_prompt: |
+    From one agent:\n
+    {other_response}
+
+  direct_prompt: |    
+    Here is some relevant information:
+    {segments}
+
+    Please answer the following multihop question by thinking step-by-step: 
+    {question}
+    
+    When you get the final answer, response in the form \\boxed{{answer}} at the end of your response.
+
+
+cwq: *ia_tasks
+
+
+quasart: *ia_tasks
