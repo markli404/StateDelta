@@ -110,7 +110,7 @@ wget -P data/FEVER https://fever.ai/download/fever2.0/fever2-fixers-dev.jsonl
 
 </details>
 
-## Retriever
+### Retriever
 
 For information asymmetry (IA) and agent workflow tasks, we use BM25 over Wikipedia for retrieval.
 
@@ -144,7 +144,7 @@ We provide pre-retrieved top-10 results for all IA datasets in `wikidpr_retrieva
 
 </details>
 
-## Run SDE
+### Run SDE
 
 The `configs/` directory provides the base configurations used for different tasks. Specifically, `configs/sde_layer.json` gives the layers selected for each model when using the SDE method.
 
@@ -158,7 +158,7 @@ python -m src.main \
     --method sde
 ```
 
-### Key Arguments
+**Key Arguments**
 
 | Parameter | Example/Options |
 | --------- | ---------------- |
@@ -167,7 +167,7 @@ python -m src.main \
 | `dataset` | IA tasks: `quasart`, `cwq`, `strategyqa`<br>debate tasks: `gsm8k`, `mmlu_college_mathematics`, `mmlu_abstract_algebra`, `mmlu_formal_logic`<br>workflow tasks: `hotpotqa`, `strategyqa`, `fever` |
 | `method` | our method: `sde`<br>or baselines: `single`, `nl`, `cipher` |
 
-### Optional Parameters
+**Optional Parameters**
 
 You can modify configuration files in the `configs/` directory. Below are some optional additional parameters. When these additional parameters are provided, your specified values will override the default settings in the configuration file.
 
@@ -185,7 +185,7 @@ You can modify configuration files in the `configs/` directory. Below are some o
 | `sample` | Number of samples to use (`-1` means all) |
 | `redo` | If set, re-run even if previous run not finish |
 
-## Result
+### Result
 
 Results are stored in:
 
@@ -217,7 +217,7 @@ The result directory will contain three files:
 
 The results reported in our paper are from the `average` field in `result.json`.
 
-# Layer Selection for SDE
+## Layer Selection for SDE
 
 Our preliminary experiments are designed to identify the most suitable layers for applying SDE. The procedure is as follows:
 
