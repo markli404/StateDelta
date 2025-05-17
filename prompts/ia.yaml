@@ -58,3 +58,6 @@ cwq: *ia_tasks
 
 
 quasart: *ia_tasks
+
+
+2wqa: *ia_tasks

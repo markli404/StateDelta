@@ -7,7 +7,6 @@ import pandas as pd
 from collections import Counter
 from typing import List, Union
 
-from src.retriever import bm25_retrieve
 from src.root_path import ROOT_PATH
 
 
@@ -245,7 +244,6 @@ class WikiMultihopQA(BaseDataset):
     eval_metrics = ["em", "f1", "precision", "recall"]
 
     def __init__(self, data_root_path: str, retrieval_topk: int = 0):
-        super().__init__(data_root_path)
         with open(os.path.join(data_root_path, "2WikiMultihopQA/dev.json"), "r") as fin:
             dataset = json.load(fin)
         with open(os.path.join(data_root_path, "2WikiMultihopQA/id_aliases.json"), "r") as fin:
@@ -257,6 +255,7 @@ class WikiMultihopQA(BaseDataset):
             with open(os.path.join(ROOT_PATH, "wikidpr_retrieval", "2WikiMultihopQA.json"), "r") as fin:
                 retrieval_passages = json.load(fin)
         else:
+            from src.retriever import bm25_retrieve
             retrieval_passages = None
         self.dataset = []
         for did, data in enumerate(dataset):
@@ -289,7 +288,7 @@ class WikiMultihopQA(BaseDataset):
         return {"predict": output, "evaluate_predict": pred, "em": em, "f1": f1, "precision": prec, "recall": recall}
 
     def evaluate(self, output, test_id):
-        return multihopqa_reevaluate(output, test_id, super().direct_evaluate)
+        return multihopqa_reevaluate(output, test_id, self.direct_evaluate)
 
 
 class StrategyQA(BaseDataset):
@@ -303,6 +302,7 @@ class StrategyQA(BaseDataset):
             with open(os.path.join(ROOT_PATH, "wikidpr_retrieval", "StrategyQA.json"), "r") as fin:
                 retrieval_passages = json.load(fin)
         else:
+            from src.retriever import bm25_retrieve
             retrieval_passages = None
         self.dataset = []
         for did, data in enumerate(dataset):
@@ -346,6 +346,7 @@ class ComplexWebQuestions(BaseDataset):
             with open(os.path.join(ROOT_PATH, "wikidpr_retrieval", "ComplexWebQuestions.json"), "r") as fin:
                 retrieval_passages = json.load(fin)
         else:
+            from src.retriever import bm25_retrieve
             retrieval_passages = None
         self.dataset = []
         for did, data in enumerate(dataset):
@@ -397,6 +398,7 @@ class QuasarT(BaseDataset):
             with open(os.path.join(ROOT_PATH, "wikidpr_retrieval", "QuasarT.json"), "r") as fin:
                 retrieval_passages = json.load(fin)
         else:
+            from src.retriever import bm25_retrieve
             retrieval_passages = None
         self.dataset = []
         for did, li in enumerate(lines):

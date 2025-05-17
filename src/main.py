@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import copy
 import time
 import torch
 import hashlib
@@ -60,8 +61,9 @@ def main(args):
         )
         cipher_generation_config = dict(temperature=0.0)
     else:
-        generation_config = load_only_generation_config(args.model_name_or_path)
-        cipher_generation_config = dict(temperature=generation_config["temperature"])
+        generation_config = dict()
+        default_generation_config = load_only_generation_config(args.model_name_or_path)
+        cipher_generation_config = dict(temperature=default_generation_config["temperature"])
     
     # create output file
     setting_dir = generate_args_hash(vars(args), ignore_keys=["output_dir", "resume", "redo", "resume_from", "sample", "test_layer"])

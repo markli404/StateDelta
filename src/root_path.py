@@ -1,3 +1,3 @@
 DATA_ROOT_PATH = "path_to_data"
 
-ROOT_PATH = "path_to_root"
+ROOT_PATH = "path_to_project"
