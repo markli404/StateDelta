@@ -18,6 +18,7 @@ class DebateTask(BaseTask):
         super().__init__(agents, dataset, args)
         if args.method == "single" and len(self.agents) > 0:
             self.agents = [self.agents[0]]
+            self.args.agent_cnt = 1
         with open(args.prompt_file) as fin:
             name = "mmlu" if args.dataset.startswith("mmlu_") else args.dataset
             self.prompt_template = yaml.safe_load(fin)[name]

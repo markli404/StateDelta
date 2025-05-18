@@ -33,6 +33,7 @@ class WorkflowTask(BaseTask):
         self.rounds = len(agents)
         if len(self.agents) > 0:
             self.agents = [self.agents[0]]
+            self.args.agent_cnt = 1
         with open(args.prompt_file, "r") as fin:
             self.prompt_template = json.load(fin)[args.dataset]
 
