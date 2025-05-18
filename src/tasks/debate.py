@@ -16,8 +16,9 @@ from src.tasks.base_task import BaseTask
 class DebateTask(BaseTask):
     def __init__(self, agents, dataset, args):
         super().__init__(agents, dataset, args)
-        if args.method == "single" and len(self.agents) > 0:
-            self.agents = [self.agents[0]]
+        if args.method == "single":
+            if len(self.agents) > 0:
+                self.agents = [self.agents[0]]
             self.args.agent_cnt = 1
         with open(args.prompt_file) as fin:
             name = "mmlu" if args.dataset.startswith("mmlu_") else args.dataset
