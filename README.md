@@ -4,6 +4,8 @@ Welcome to the Official Repository of State Delta Encoding (SDE)!
 
 This repository contains the code, datasets models used in our paper: "Augmenting Multi-agent Communication with State Delta Trajectory".
 
+![](figs/SDE_only.png)
+
 ## Reproduce Paper Results
 
 ### Install Environment
@@ -14,13 +16,11 @@ conda activate SDE
 pip install -r requirements.txt
 ```
 
-### Configure Paths
-
 + Update `ROOT_DIR` in `src/root_path.py` to to the folder address where you store this project.
 
 + Update `DATA_ROOT_PATH` in `src/root_path.py` to the dataset directory (e.g., `data/` in the current directory).
 
-### Download Dataset
+### Download Datasets
 
 You can download the datasets used in our experiments as follows, assuming `DATA_ROOT_PATH` is `data/` in the current directory.
 
