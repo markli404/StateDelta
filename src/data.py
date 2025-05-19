@@ -454,11 +454,14 @@ class FEVER(BaseDataset):
                     val[key] = value
             self.dataset.append(val)
     
-    def evaluate(self, output: str, test_id: int):
+    def direct_evaluate(self, output: str, test_id: int):
         ground_truth = self.get_item(test_id)["answer"]
         pred = self.parse_answer(output) 
         em = self.exact_match_score(pred, ground_truth)
         return {"predict": output, "evaluate_predict": pred, "em": em}
+
+    def evaluate(self, output, test_id):
+        return multihopqa_reevaluate(output, test_id, self.direct_evaluate) 
     
 
 class HotpotQA(BaseDataset):

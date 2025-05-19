@@ -71,6 +71,8 @@ class WorkflowTask(BaseTask):
             "run_time(s)": run_time,
         }
         eval_ret = self.dataset.evaluate(output=info["answer"], test_id=data["test_id"])
+        detail["predict"] = eval_ret["predict"]
+        detail["evaluate_predict"] = eval_ret["evaluate_predict"]
         for met in self.dataset.eval_metrics:
             try:
                 detail[met] = eval_ret[met].item()
@@ -99,7 +101,6 @@ class SingleWorkflowTask(WorkflowTask):
         prompt = prompts["direct"]
         agent.init_history(first_user_prompt=prompt)
         output = agent.generate(agent.history_msgs)
-        agent.final_output_text = output
         agent.history = agent.history_msgs
         end_time = time.perf_counter()
         info = dict(answer=output)

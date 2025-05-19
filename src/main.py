@@ -189,7 +189,7 @@ if __name__ == "__main__":
                 cfg = json.load(fin)
                 args.edit_layer_idx = cfg[args.model_name_or_path]
         edit_layer_idx = args.edit_layer_idx.split(",")
-        edit_layer_idx = [int(x) for x in edit_layer_idx] # -1 为了符合我从 1 开始计数的习惯（x
+        edit_layer_idx = [int(x) for x in edit_layer_idx] 
         args.edit_layer_idx = sorted(edit_layer_idx)
     
     if args.task_type == "debate" and args.sample is None:
