@@ -59,11 +59,13 @@ def main(args):
             top_p=None,
             top_k=None,
         )
-        cipher_generation_config = dict(temperature=0.0)
+        cipher_generation_config = [dict(temperature=0.0) for i in range(args.agent_cnt)]
     else:
         generation_config = dict()
         default_generation_config = load_only_generation_config(args.model_name_or_path)
-        cipher_generation_config = dict(temperature=default_generation_config["temperature"])
+        cipher_generation_config = []
+        for i in range(args.agent_cnt):
+            cipher_generation_config.append(dict(temperature=default_generation_config["temperature"] * (i + 1) / args.agent_cnt))
     
     # create output file
     setting_dir = generate_args_hash(vars(args), ignore_keys=["output_dir", "resume", "redo", "resume_from", "sample", "test_layer"])
@@ -116,7 +118,7 @@ def main(args):
                 engine_model_name_or_path=args.model_name_or_path,
                 engine_model=model,
                 engine_tokenizer=tokenizer,
-                generation_configs=cipher_generation_config if args.method == "cipher" else generation_config,
+                generation_configs=cipher_generation_config[idx] if args.method == "cipher" else generation_config,
                 max_new_tokens=args.max_new_tokens,
                 role_prompt=None,
             ))
