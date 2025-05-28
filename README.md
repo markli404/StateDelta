@@ -1,4 +1,4 @@
-# StateDelta
+# StateDeltaEncoding
 
 Welcome to the Official Repository of State Delta Encoding (SDE)!
 
