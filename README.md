@@ -114,7 +114,7 @@ wget -P data/FEVER https://fever.ai/download/fever2.0/fever2-fixers-dev.jsonl
 
 For information asymmetry (IA) and agent workflow tasks, we use BM25 over Wikipedia for retrieval.
 
-We provide pre-retrieved top-10 results for all IA datasets in `wikidpr_retrieval.zip`. Unzip it to `wikidpr_retrieval/` to use directly.
+We provide pre-retrieved top-10 results for all IA datasets in `wikidpr_retrieval.tar.gz`. Unzip it to `wikidpr_retrieval/` to use directly (`tar -xzf wikidpr_retrieval.tar.gz`).
 
 <details>
 <summary>Optional: Build Your Own Retriever</summary>
