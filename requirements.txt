@@ -1,15 +1,18 @@
+# core
 torch==2.1.0
 torchvision==0.16.0
 torchaudio==2.1.0
 transformers==4.44.2
-termcolor
-pandas
-matplotlib
 accelerate==1.2.1
-numpy==1.26.0
-gym
+termcolor==2.4.0
+pandas==2.2.2
+matplotlib==3.8.4
+numpy==1.26.4
+
+# env
+gym==0.26.2
 
 # retrieval
-faiss-cpu
+faiss-cpu==1.7.4
 beir
 elasticsearch==8.15.0
